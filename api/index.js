@@ -25,8 +25,8 @@ app.get('/api/hello', async (req, res) => {
 
     res.send({
       client_ip,
-      location: locale,
-      greeting: `Hello, ${visitor_name}!, the temperature is ${temp} in ${locale}`
+      location: city,
+      greeting: `Hello, ${visitor_name}!, the temperature is ${temp} in ${city}`
     })
   } catch (err) {
     res.send({ status: "failed", error_msg: err.message });

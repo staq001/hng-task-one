@@ -1,10 +1,21 @@
 const geoip = require('geoip-lite');
 const { OpenWeatherAPI } = require("openweather-api-node")
 
-function location(ip) {
-  const geo = geoip.lookup(ip)
+// function location(ip) {
+//   const geo = geoip.lookup(ip)
 
-  return geo.city;
+//   return geo.city;
+// }
+
+async function location(ip) {
+  try {
+    const url = `https://ipinfo.io/${ip}?token=${process.env.IP_KEY}`;
+    const response = await fetch(url);
+    const locale = await response.json();
+    return locale.city;
+  } catch (err) {
+    throw err;
+  }
 }
 
 async function weatherFunc(location) {
