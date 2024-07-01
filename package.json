@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "env-cmd .config/dev.env node src/location"
+    "dev": "env-cmd .config/dev.env node src/location",
+    "vercel-build": ""
   },
   "author": "",
   "license": "ISC",
