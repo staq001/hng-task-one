@@ -20,8 +20,10 @@ app.get('/api/hello', async (req, res) => {
   try {
     const { visitor_name } = req.query;
     const client_ip = req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.socket.remoteAddress
-    const city = location(client_ip)
-    const temp = await weatherFunc(city)
+    const locale = await location(client_ip);
+    const city = await locale.city;
+    const temp = await weatherFunc(city);
+
 
     res.send({
       client_ip,

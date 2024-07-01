@@ -9,9 +9,10 @@ const { OpenWeatherAPI } = require("openweather-api-node")
 async function location(ip) {
   try {
     const url = `https://ipinfo.io/${ip}?token=${process.env.IP_KEY}`;
+    console.log(process.env.IP_KEY);
     const response = await fetch(url);
     const locale = await response.json();
-    return locale.city;
+    return locale
   } catch (err) {
     throw err;
   }
