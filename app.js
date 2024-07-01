@@ -1,6 +1,5 @@
-import express from 'express';
-import { city } from './location.js';
-
+const express = require('express');
+const location = require("./location.js")
 
 const app = express();
 
@@ -20,7 +19,7 @@ app.get('/api/hello', async (req, res) => {
 
   res.send({
     client_ip,
-    location: city,
+    location: location(client_ip),
     greeting: `Hello, ${match.visitor_name}!`
   })
 })

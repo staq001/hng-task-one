@@ -1,9 +1,9 @@
-import fetch from 'node-fetch';
+const geoip = require('geoip-lite');
 
+function location(ip) {
+  const geo = geoip.lookup(ip)
 
-const requestOptions = {
-  method: 'GET',
-};
+  return geo.city;
+}
 
-
-export const city = await fetch("https://api.geoapify.com/v1/ipinfo?&apiKey=fd42dc6d0d234b5f8ec3f3678577adc6", requestOptions).then(url => url.json().then(res => res.city.name).catch(err => console.log(err)));
+module.exports = location;
