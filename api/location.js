@@ -7,12 +7,10 @@ function location(ip) {
   return geo.city;
 }
 
-
-
 async function weatherFunc(location) {
   let temp;
   let weather = new OpenWeatherAPI({
-    key: 'f6dba2e71df78d9729c40da3b5350d01',
+    key: process.env.WEATHER_APIKEY, // hide
     locationName: location,
     units: "imperial"
   })
@@ -20,7 +18,6 @@ async function weatherFunc(location) {
   const current = await weather.getCurrent().then(async data => {
     temp = data.weather.temp;
     tempInCelsius = Math.round((temp.cur - 32) * (5 / 9) * 100) / 100;
-    // console.log(temp.cur);
     return tempInCelsius;
   })
   return current;
