@@ -1,4 +1,3 @@
-const geoip = require('geoip-lite');
 const { OpenWeatherAPI } = require("openweather-api-node")
 
 // function location(ip) {
